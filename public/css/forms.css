@@ -1,0 +1,451 @@
+/* ================================== */
+/* css/forms.css                  */
+/* Estilos para formularios y inputs */
+/* ================================== */
+
+/* === Formulario Base === */
+form {
+    margin-bottom: 20px;            /* Espacio debajo del formulario */
+    width: 100%;                    /* Ocupar todo el ancho disponible */
+}
+
+/* === Grupo de Inputs === */
+.input-group {
+    margin-bottom: 15px;            /* Espacio entre grupos de inputs */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Etiqueta del grupo de input */
+.input-group label {
+    margin-bottom: 5px;             /* Espacio entre etiqueta y el campo */
+    font-weight: 500;               /* Semi-negrita */
+    color: var(--text-color);       /* Color de texto principal */
+    display: flex;                  /* Para alinear ícono */
+    align-items: center;            /* Centra el ícono verticalmente */
+}
+
+.input-group label i {
+    margin-right: 5px;              /* Espacio entre el ícono y el texto */
+    color: var(--secondary-color);  /* Color gris secundario */
+}
+
+/* Estilos base para inputs de texto, número, etc */
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group input[type="email"],
+.input-group input[type="tel"],
+.input-group input[type="password"],
+.input-group input[type="date"],
+.input-group input[type="time"],
+.input-group input[type="search"],
+.input-group select,
+.input-group textarea {
+    padding: 8px 12px;              /* Espaciado interno */
+    border: 1px solid var(--border-color); /* Borde normal */
+    border-radius: 4px;             /* Bordes redondeados */
+    font-size: 1em;                 /* Tamaño de fuente estándar */
+    width: 100%;                    /* Ocupar todo el ancho disponible */
+    background-color: #fff;         /* Fondo blanco */
+    color: var(--text-color);       /* Color de texto principal */
+    transition: border-color 0.2s, box-shadow 0.2s; /* Transición suave */
+}
+
+/* Estado de foco para inputs */
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--primary-color); /* Borde azul al enfocar */
+    outline: none;                  /* Quitar outline por defecto */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Sombra sutil */
+}
+
+/* Estado de error para inputs */
+.input-group input.is-invalid,
+.input-group select.is-invalid,
+.input-group textarea.is-invalid {
+    border-color: var(--danger-color); /* Borde rojo para error */
+}
+
+/* Mensaje de error específico para un campo */
+.input-group .field-error {
+    color: var(--danger-color);     /* Texto rojo */
+    font-size: 0.85em;              /* Más pequeño que el texto normal */
+    margin-top: 4px;                /* Espacio arriba del mensaje */
+    display: none;                  /* Oculto por defecto, se muestra con JS */
+}
+
+/* Mostrar mensaje de error cuando el input tiene la clase is-invalid */
+.input-group input.is-invalid + .field-error,
+.input-group select.is-invalid + .field-error,
+.input-group textarea.is-invalid + .field-error {
+    display: block;                 /* Mostrar el mensaje */
+}
+
+/* Estilos para <select> */
+.input-group select {
+    appearance: none;               /* Quitar apariencia nativa */
+    -webkit-appearance: none;       /* Para Safari */
+    -moz-appearance: none;          /* Para Firefox */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;   /* No repetir imagen */
+    background-position: right 10px center; /* Posición flecha */
+    padding-right: 30px;            /* Espacio para la flecha */
+}
+
+/* Estilos para textarea */
+.input-group textarea {
+    min-height: 80px;               /* Altura mínima */
+    resize: vertical;               /* Permitir redimensionar solo vertical */
+}
+
+/* Estilos para campos deshabilitados */
+.input-group input:disabled,
+.input-group select:disabled,
+.input-group textarea:disabled {
+    background-color: #f5f5f5;      /* Fondo gris claro */
+    cursor: not-allowed;            /* Cursor de no permitido */
+    opacity: 0.8;                   /* Ligeramente transparente */
+}
+
+/* Campos de solo lectura (menos intenso que deshabilitado) */
+.input-group input[readonly],
+.input-group textarea[readonly] {
+    background-color: #fafafa;      /* Fondo muy claro */
+    cursor: default;                /* Cursor normal */
+}
+
+/* === Grupos Especiales === */
+
+/* Grupo de input de ubicación con botón de geolocalización */
+.location-group {
+    margin-bottom: 15px;            /* Igual que input-group */
+}
+
+.location-group label {
+    display: flex;                  /* Flexbox para label y botón */
+    justify-content: space-between; /* Etiqueta a la izquierda, botón a la derecha */
+    align-items: center;            /* Centrar verticalmente */
+    margin-bottom: 5px;             /* Igual que input-group */
+}
+
+.location-group .coords {
+    display: flex;                  /* Muestra lat/lng uno al lado del otro */
+    gap: 8px;                       /* Espacio entre los dos inputs */
+}
+
+.location-group .coords input {
+    flex: 1;                        /* Cada input ocupa espacio disponible */
+    padding: 8px 12px;              /* Igual que otros inputs */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+/* Grupo de búsqueda horizontal (label + input + button) */
+.search-group {
+    display: flex;                  /* Flexbox en fila */
+    align-items: center;            /* Alinear verticalmente */
+    gap: 8px;                       /* Espacio entre elementos */
+    margin-bottom: 15px;            /* Igual que input-group */
+}
+
+.search-group label {
+    white-space: nowrap;            /* Evitar que el texto se parta */
+    margin-bottom: 0;               /* Sin margen como en input-group normal */
+}
+
+.search-group input {
+    flex: 1;                        /* Ocupa espacio disponible */
+    min-width: 0;                   /* Previene overflow */
+}
+
+/* Input de búsqueda standalone */
+input.search-input {
+    padding: 8px 12px 8px 35px;     /* Padding extra izquierdo para icono */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>");
+    background-repeat: no-repeat;   /* No repetir imagen */
+    background-position: left 10px center; /* Posición icono */
+    width: 100%;                    /* Ancho completo */
+}
+
+/* === Estilo para Checkboxes y Radios === */
+.checkbox-group,
+.radio-group {
+    margin-bottom: 15px;            /* Igual que input-group */
+}
+
+.checkbox-group label,
+.radio-group label {
+    display: flex;                  /* Flexbox para alinear */
+    align-items: center;            /* Centrar verticalmente */
+    font-weight: normal;            /* Texto normal (no bold) */
+    margin-bottom: 3px;             /* Menos margen que labels estándar */
+    cursor: pointer;                /* Cursor mano para mejorar UX */
+}
+
+.checkbox-group input[type="checkbox"],
+.radio-group input[type="radio"] {
+    margin-right: 8px;              /* Espacio entre checkbox/radio y texto */
+}
+
+/* Contenedor para múltiples checkboxes o radios */
+.checkbox-list,
+.radio-list {
+    margin-top: 8px;                /* Espacio arriba del grupo */
+}
+
+/* === Vista Previa de Imágenes === */
+.comprobante-preview {
+    max-width: 100%;                /* Ancho máximo */
+    max-height: 200px;              /* Altura máxima */
+    margin-top: 10px;               /* Espacio arriba */
+    display: none;                  /* Oculto por defecto, se muestra con JS */
+    border: 1px solid var(--border-color); /* Borde sutil */
+    border-radius: 4px;             /* Bordes redondeados */
+}
+
+/* === Barra de Herramientas de Formularios === */
+.toolbar {
+    display: flex;                  /* Flexbox en fila */
+    align-items: center;            /* Alinear verticalmente */
+    gap: 10px;                      /* Espacio entre elementos */
+    margin-bottom: 15px;            /* Margen inferior */
+    flex-wrap: wrap;                /* Se ajusta en pantallas pequeñas */
+}
+
+.toolbar input,
+.toolbar select {
+    padding: 7px 10px;              /* Ligeramente más compacto que los normales */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.toolbar input[type="search"] {
+    min-width: 200px;               /* Ancho mínimo para búsqueda */
+}
+
+/* === Etiquetas de Precio/Totales === */
+.price-estimate {
+    margin: 15px 0;                 /* Margen vertical */
+    padding: 10px;                  /* Padding interno */
+    background-color: #f4f7fc;      /* Fondo azul muy claro */
+    border-radius: 4px;             /* Bordes redondeados */
+    font-weight: 500;               /* Semi-negrita */
+    text-align: right;              /* Alineado a la derecha */
+}
+
+.price-estimate .highlight {
+    font-size: 1.1em;               /* Tamaño ligeramente mayor */
+    color: var(--primary-color);    /* Color azul */
+    margin-left: 10px;              /* Espacio a la izquierda */
+}
+
+/* === Manejo de errores y estados de carga === */
+form .loading-placeholder {
+    text-align: center;             /* Centrar contenido */
+    padding: 20px;                  /* Espaciado interno */
+    color: var(--text-muted);       /* Color gris para texto */
+}
+
+form .status-message {
+    margin-top: 10px;               /* Espacio arriba del mensaje */
+}
+
+/* === Formulario específico de código de referido === */
+.referral-code-box {
+    display: flex;                  /* Flexbox en fila */
+    align-items: center;            /* Centrar verticalmente */
+    gap: 10px;                      /* Espacio entre elementos */
+    margin-bottom: 15px;            /* Margen inferior */
+    background-color: #f5f5f5;      /* Fondo gris claro */
+    padding: 8px 12px;              /* Padding interno */
+    border-radius: 4px;             /* Bordes redondeados */
+}
+
+.referral-code-box strong {
+    font-size: 1.1em;               /* Tamaño ligeramente mayor */
+    font-family: monospace;         /* Fuente monoespaciada para códigos */
+    letter-spacing: 1px;            /* Espaciado entre letras */
+}
+
+/* === Validación Visual === */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+.input-group input.shake,
+.input-group select.shake,
+.input-group textarea.shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    border-color: var(--danger-color); /* Borde rojo */
+}
+
+/* Para campos opcionales, se puede mostrar un indicador sutil */
+.input-group label .optional {
+    font-size: 0.8em;               /* Más pequeño */
+    color: var(--text-muted);       /* Color gris */
+    margin-left: 5px;               /* Espacio a la izquierda */
+    font-weight: normal;            /* Sin negrita */
+}
+
+/* === Estilos para subida de archivos === */
+.input-group input[type="file"] {
+    padding: 8px;                   /* Padding más pequeño que otros inputs */
+    background-color: #f5f5f5;      /* Fondo gris claro */
+}
+
+.input-group input[type="file"]::file-selector-button {
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-right: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.input-group input[type="file"]::file-selector-button:hover {
+    background-color: var(--light-color);
+}
+
+/* === Formularios de autenticación === */
+.auth-container form {
+    width: 100%;                    /* Ancho completo */
+    max-width: 400px;               /* Ancho máximo */
+    margin: 0 auto;                 /* Centrado horizontal */
+}
+
+.auth-container .input-group {
+    margin-bottom: 20px;            /* Margen más grande para login/registro */
+}
+
+.auth-container button[type="submit"] {
+    margin-top: 10px;               /* Espacio extra arriba del botón */
+}
+
+/* === Responsividad === */
+@media (max-width: 768px) {
+    .input-group label {
+        font-size: 0.95em;          /* Texto más pequeño en tablets */
+    }
+    
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+        padding: 8px 10px;          /* Padding reducido */
+        font-size: 0.95em;          /* Texto más pequeño */
+    }
+    
+    .location-group .coords {
+        flex-direction: column;     /* Inputs de coordenadas en columna */
+        gap: 5px;                   /* Espacio reducido */
+    }
+    
+    .toolbar {
+        flex-direction: column;     /* Elementos de la toolbar en columna */
+        align-items: stretch;       /* Estirar elementos al ancho completo */
+    }
+    
+    .toolbar input,
+    .toolbar select,
+    .toolbar button {
+        width: 100%;                /* Ancho completo en móvil */
+        margin-bottom: 5px;         /* Espacio entre elementos */
+    }
+
+    .search-group {
+        flex-direction: column;     /* Group de búsqueda en columna */
+        align-items: stretch;       /* Estirar elementos */
+    }
+}
+
+/* === Formularios específicos de negocio === */
+.form-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;              /* Espacio arriba */
+    margin-top: 15px;               /* Margen arriba */
+}
+
+.form-section h4 {
+    margin-top: 0;                  /* Sin margen superior */
+    margin-bottom: 15px;            /* Espacio debajo */
+    font-size: 1.1em;               /* Tamaño reducido */
+    color: var(--secondary-color);  /* Color gris secundario */
+}
+
+/* Configuración para formularios en paneles o tarjetas */
+.card form {
+    margin-bottom: 0;               /* Sin margen inferior dentro de tarjetas */
+}
+
+/* === Interacciones JavaScript === */
+/* Estado para inputs con autocompletado activo */
+.input-group.autocomplete {
+    position: relative;             /* Para posicionar resultados */
+}
+
+.autocomplete-results {
+    position: absolute;             /* Posicionamiento absoluto */
+    top: 100%;                      /* Justo debajo del input */
+    left: 0;
+    right: 0;
+    max-height: 200px;              /* Altura máxima */
+    overflow-y: auto;               /* Scroll vertical si es necesario */
+    background-color: #fff;         /* Fondo blanco */
+    border: 1px solid var(--border-color);
+    border-top: none;               /* Sin borde superior */
+    border-radius: 0 0 4px 4px;     /* Bordes redondeados abajo */
+    z-index: 10;                    /* Por encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+    display: none;                  /* Oculto por defecto */
+}
+
+.autocomplete-item {
+    padding: 8px 12px;              /* Padding interno */
+    cursor: pointer;                /* Cursor de mano */
+    border-bottom: 1px solid #f5f5f5; /* Separador sutil */
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.selected {
+    background-color: #f0f7ff;      /* Fondo azul muy claro al hover */
+}
+
+/* Soporte para validación de formulario nativa */
+.input-group input:invalid,
+.input-group select:invalid,
+.input-group textarea:invalid {
+    border-color: var(--danger-color); /* Borde rojo para campos inválidos */
+}
+
+/* Pero solo mostrar validación después de intentar enviar el formulario */
+form:not(.was-validated) .input-group input:invalid,
+form:not(.was-validated) .input-group select:invalid,
+form:not(.was-validated) .input-group textarea:invalid {
+    border-color: var(--border-color); /* Restablecer color de borde */
+}
+
+/* Cuando se ha intentado validar, mostrar mensajes de validación */
+form.was-validated .input-group input:invalid + .invalid-feedback,
+form.was-validated .input-group select:invalid + .invalid-feedback,
+form.was-validated .input-group textarea:invalid + .invalid-feedback {
+    display: block;                 /* Mostrar mensaje de error */
+}
+
+.invalid-feedback {
+    display: none;                  /* Oculto por defecto */
+    color: var(--danger-color);     /* Texto rojo */
+    font-size: 0.85em;              /* Tamaño pequeño */
+    margin-top: 4px;                /* Espacio arriba */
+}
+
+/* Estilos para campos requeridos */
+.input-group label.required::after {
+    content: " *";                  /* Añadir asterisco */
+    color: var(--danger-color);     /* Color rojo */
+}

@@ -1,0 +1,119 @@
+/* ================================== */
+/* css/modals.css                 */
+/* Estilos para ventanas emergentes  */
+/* ================================== */
+
+/* Contenedor principal del modal (ocupa toda la pantalla) */
+.modal {
+    display: none;                /* Oculto por defecto, JS lo muestra cambiando esto o añadiendo clase */
+    position: fixed;              /* Se posiciona relativo a la ventana del navegador */
+    z-index: 1050;                /* Asegura que esté por encima de otros elementos (excepto quizás header) */
+    left: 0;
+    top: 0;
+    width: 100%;                  /* Ancho completo */
+    height: 100%;                 /* Alto completo */
+    overflow: auto;               /* Permite scroll si el contenido del modal es muy grande */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    animation: fadeIn 0.3s ease;  /* Usa la animación fadeIn definida en base.css */
+}
+
+/* Contenido real del modal (la caja blanca) */
+.modal-content {
+    background-color: var(--card-background); /* Fondo blanco */
+    margin: 8% auto;              /* Margen superior/inferior y centrado horizontal. Reducido para que no esté tan abajo */
+    padding: 30px;                /* Espaciado interno */
+    border-radius: var(--border-radius); /* Bordes redondeados */
+    max-width: 600px;             /* Ancho máximo por defecto */
+    width: 90%;                   /* Ancho relativo para pantallas más pequeñas */
+    position: relative;           /* Necesario para posicionar el botón de cierre */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    animation: slideIn 0.4s ease-out; /* Animación de deslizamiento al aparecer */
+    max-height: 80vh;             /* Altura máxima (80% de la altura de la ventana) */
+    overflow-y: auto;             /* Scroll vertical si el contenido excede la altura máxima */
+}
+
+/* Botón de cierre (la 'X') */
+.close-button {
+    color: var(--secondary-color);/* Color gris */
+    position: absolute;           /* Posición absoluta relativa a .modal-content */
+    top: 10px;                    /* Cerca del borde superior */
+    right: 15px;                  /* Cerca del borde derecho */
+    font-size: 2em;               /* Tamaño grande */
+    font-weight: bold;            /* Negrita */
+    cursor: pointer;              /* Cursor de mano */
+    line-height: 1;               /* Ajusta altura de línea para mejor posicionamiento */
+    padding: 0 5px;               /* Pequeño padding para área de clic */
+    transition: color 0.2s ease;
+    z-index: 10;                  /* Asegura que esté sobre el contenido del modal */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--dark-color);     /* Cambia a color oscuro al pasar el ratón o enfocar */
+    text-decoration: none;        /* Quita cualquier subrayado */
+    outline: none;                /* Quita borde de foco */
+}
+
+/* Título dentro del modal */
+.modal-content h2 {
+    margin-top: 0;                /* Quita margen superior del título */
+    margin-bottom: 25px;          /* Espacio debajo del título */
+    color: var(--primary-color);  /* Título azul */
+    font-size: 1.4em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    padding-right: 30px; /* Espacio para que no se solape con el botón de cierre */
+}
+
+.modal-content h3 { /* Títulos más pequeños dentro del modal */
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+}
+
+/* Ajustes menores para elementos dentro del modal */
+.modal-content .table {
+    margin-top: 10px;             /* Menos espacio arriba de las tablas dentro de modales */
+}
+
+.modal-content .input-group {
+    margin-bottom: 15px;          /* Menos espacio entre campos en modales */
+}
+
+.modal-content .loading-placeholder {
+    padding: 40px 20px;           /* Padding estándar para cargas dentro del modal */
+    font-size: 1em;
+}
+
+.modal-content .error-message {
+    margin-top: 10px;
+    margin-bottom: 10px; /* Añadir margen inferior también */
+    padding: 10px; /* Ajustar padding si se ve muy pegado */
+}
+
+/* Animación de deslizamiento para el contenido del modal */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px); /* Empieza ligeramente arriba */
+        opacity: 0;                   /* Empieza transparente */
+    }
+    to {
+        transform: translateY(0);     /* Termina en su posición */
+        opacity: 1;                   /* Termina opaco */
+    }
+}
+
+/* Responsividad para Modales */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;             /* Margen superior/inferior ajustado */
+        max-width: 95%;               /* Casi todo el ancho */
+        padding: 20px;                /* Menos padding */
+        max-height: 85vh;             /* Ligeramente más alto permitido */
+    }
+    .modal-content h2 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+}

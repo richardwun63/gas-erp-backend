@@ -1,0 +1,101 @@
+/* ================================== */
+/* css/auth.css                   */
+/* Estilos para pantallas Login/Reg */
+/* ================================== */
+
+/* Contenedor principal de las pantallas de autenticación */
+.auth-container {
+    max-width: 450px;             /* Ancho máximo del contenedor */
+    margin: 50px auto;            /* Margen superior/inferior y centrado horizontal */
+    padding: 30px;                /* Espaciado interno */
+    background-color: var(--card-background); /* Fondo blanco (definido en base.css) */
+    border-radius: var(--border-radius); /* Bordes redondeados */
+    box-shadow: var(--box-shadow);    /* Sombra */
+    text-align: center;               /* Centra el texto y el logo */
+    border: 1px solid var(--border-color); /* Borde sutil */
+}
+
+/* Logo dentro del contenedor de autenticación */
+.auth-container .logo {
+    max-width: 120px;             /* Tamaño máximo del logo */
+    margin-bottom: 15px;          /* Espacio debajo del logo */
+    margin-left: auto;            /* Centra el logo si es más pequeño que max-width */
+    margin-right: auto;
+    display: block; /* Asegura centrado con márgenes auto */
+}
+
+/* Títulos H2 dentro del contenedor de autenticación */
+.auth-container h2 {
+    margin-bottom: 10px;          /* Espacio debajo del título */
+    color: var(--dark-color);     /* Color oscuro */
+    font-size: 1.5em;             /* Tamaño del título */
+    font-weight: 600;
+}
+
+/* Subtítulo (p.subtitle) dentro del contenedor */
+.auth-container .subtitle {
+    color: var(--text-muted);     /* Color de texto gris */
+    margin-bottom: 25px;          /* Más espacio debajo del subtítulo */
+    font-size: 1em;
+}
+
+/* Contenedor para los enlaces (Registrarse, Olvidó Contraseña) */
+.auth-links {
+    margin-top: 25px;             /* Espacio arriba de los enlaces */
+    font-size: 0.9em;             /* Texto un poco más pequeño */
+}
+
+.auth-links a {
+    display: block;               /* Hace que cada enlace ocupe su propia línea */
+    margin-bottom: 10px;          /* Espacio entre enlaces */
+    color: var(--secondary-color);/* Color gris */
+}
+
+ .auth-links a:hover {
+    color: var(--primary-color);  /* Cambia a azul al pasar el ratón */
+}
+
+/* Botón para volver (ej. en pantalla de registro) */
+.back-button {
+    background: none;             /* Sin fondo */
+    border: none;                 /* Sin borde */
+    color: var(--primary-color);  /* Color azul */
+    font-size: 1em;
+    cursor: pointer;              /* Cursor de mano */
+    display: block;               /* Ocupa su línea */
+    text-align: left;             /* Alineado a la izquierda */
+    margin-bottom: 15px;          /* Espacio debajo */
+    padding: 5px 0;               /* Padding vertical ligero */
+}
+
+.back-button i { /* Icono dentro del botón volver */
+    margin-right: 5px;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes responsivos para el contenedor de autenticación */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 30px auto;        /* Menos margen vertical en pantallas pequeñas */
+        padding: 25px;            /* Menos padding */
+    }
+     .auth-container h2 {
+         font-size: 1.4em;
+    }
+}
+
+ @media (max-width: 480px) {
+    .auth-container {
+        margin: 20px 15px;        /* Aún menos margen */
+        padding: 20px;
+    }
+     .auth-container h2 {
+         font-size: 1.3em;
+    }
+     .auth-container .logo {
+        max-width: 100px;
+    }
+}

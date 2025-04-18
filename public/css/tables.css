@@ -1,0 +1,438 @@
+/* ================================== */
+/* css/tables.css                 */
+/* Estilos para tablas de datos     */
+/* ================================== */
+
+/* Contenedor para hacer la tabla responsiva (scroll horizontal) */
+.table-responsive {
+    display: block;               /* Asegura que ocupe el ancho disponible */
+    width: 100%;
+    overflow-x: auto;             /* Añade scroll horizontal si la tabla es más ancha */
+    -webkit-overflow-scrolling: touch; /* Mejora scroll en iOS */
+    margin-bottom: 1rem;          /* Espacio debajo del contenedor */
+    border: 1px solid var(--border-color); /* Borde alrededor del contenedor con scroll */
+    border-radius: var(--border-radius);   /* Bordes redondeados */
+    background-color: var(--card-background); /* Fondo consistente */
+    box-shadow: var(--box-shadow-sm);      /* Sombra sutil */
+}
+
+/* Estilo base de la tabla */
+.table {
+    width: 100%;                  /* Ocupa todo el ancho del contenedor padre (o del scroll) */
+    border-collapse: collapse;    /* Colapsa los bordes de las celdas */
+    margin-bottom: 0;             /* Quita margen inferior de la tabla si está dentro de responsive */
+    background-color: var(--card-background); /* Fondo blanco consistente */
+    color: var(--text-color);     /* Color de texto */
+    font-size: 0.95em;            /* Tamaño de fuente ligeramente reducido */
+    table-layout: auto;           /* Permite ajustar el ancho de columnas según su contenido */
+}
+
+/* Celdas de encabezado (th) y celdas de datos (td) */
+.table th,
+.table td {
+    padding: 10px 12px;           /* Espaciado interno de las celdas */
+    text-align: left;             /* Alineación del texto a la izquierda */
+    vertical-align: middle;       /* Alinea contenido en el medio verticalmente */
+    border-bottom: 1px solid var(--border-color); /* Línea divisoria debajo de cada fila */
+    position: relative;           /* Base para posicionamiento absoluto dentro de celdas */
+    white-space: nowrap;          /* Evita que el texto se parta por defecto (útil con scroll) */
+}
+
+/* Permitir wrap en celdas con mucho texto */
+.table td.wrap-text,
+.table th.wrap-text {
+    white-space: normal;          /* Permite que el texto largo se parta */
+}
+
+/* Permitir texto muy largo con elipsis */
+.table td.ellipsis,
+.table th.ellipsis {
+    max-width: 150px;             /* Ancho máximo para la celda */
+    overflow: hidden;             /* Oculta el exceso */
+    text-overflow: ellipsis;      /* Muestra elipsis */
+    white-space: nowrap;          /* No permite saltos de línea */
+}
+
+.table tbody tr:last-child td { /* Quita borde inferior de la última fila del cuerpo */
+     border-bottom: none;
+}
+
+/* Estilo específico para los encabezados (th) */
+.table th {
+    background-color: var(--light-color); /* Fondo gris claro */
+    font-weight: 600;             /* Negrita ligera */
+    color: var(--dark-color);     /* Texto oscuro */
+    vertical-align: bottom;       /* Alinea texto abajo en encabezado */
+    border-bottom-width: 2px;     /* Borde inferior más grueso */
+    position: sticky;             /* Hace el header pegajoso */
+    top: 0;                       /* Pegado arriba dentro del contenedor responsive */
+    z-index: 10;                  /* Encima del contenido */
+    box-shadow: 0 1px 0 rgba(0,0,0,0.1); /* Sombra sutil para separar del contenido */
+}
+
+/* Efecto Hover en las filas del cuerpo de la tabla (tbody) */
+.table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05); /* Fondo azul muy sutil al pasar el ratón */
+    cursor: default;              /* Mantiene cursor normal (podría cambiarse si la fila es clicable) */
+}
+
+/* Estilos para filas clicables */
+.table tbody tr.clickable {
+    cursor: pointer;              /* Cambia el cursor a mano */
+    transition: background-color 0.2s ease; /* Suaviza la transición de color de fondo */
+}
+
+.table tbody tr.clickable:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Fondo azul más visible para filas clicables */
+}
+
+/* Estilos para filas seleccionadas */
+.table tbody tr.selected {
+    background-color: var(--primary-light); /* Fondo azul claro para filas seleccionadas */
+}
+
+/* Estilos para filas con errores o alertas */
+.table tbody tr.table-danger {
+    background-color: var(--status-danger-bg);
+}
+
+.table tbody tr.table-warning {
+    background-color: var(--status-pending-bg);
+}
+
+.table tbody tr.table-success {
+    background-color: var(--status-success-bg);
+}
+
+.table tbody tr.table-info {
+    background-color: var(--status-info-bg);
+}
+
+/* Estilo para botones DENTRO de las celdas de la tabla */
+.table td .btn {
+    padding: 4px 8px;             /* Botones más pequeños dentro de tablas */
+    font-size: 0.8em;
+    white-space: normal;          /* Permite que el texto del botón se parta si es largo */
+    margin: 1px 2px;              /* Pequeño margen alrededor para separación */
+    vertical-align: middle;       /* Alinea bien con texto adyacente */
+}
+
+/* Alinear botones en horizontal si hay varios */
+.table td .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: flex-start;
+}
+
+/* Estilo para etiquetas de estado DENTRO de las celdas */
+.table td .status-tag {
+    vertical-align: middle;       /* Alinea bien con texto adyacente */
+    font-size: 0.75em;            /* Ligeramente más pequeño en tablas */
+    padding: 2px 6px;
+}
+
+/* Estilo para filas de totales en el pie de tabla (tfoot) */
+.table tfoot tr.table-totals th,
+.table tfoot tr.table-totals td {
+    font-weight: bold;            /* Texto en negrita */
+    border-top: 2px solid var(--primary-color); /* Línea azul gruesa arriba */
+    background-color: var(--primary-light);    /* Fondo azul muy claro */
+    color: var(--primary-color);  /* Texto azul */
+    border-bottom: none;          /* Quita borde inferior del total */
+}
+
+.table tfoot tr.table-totals th {
+    text-align: right;            /* Alinea el texto "TOTAL:" a la derecha */
+    padding-right: 15px;
+}
+
+.table tfoot tr.table-totals td {
+     text-align: right;           /* Alinea el valor total a la derecha */
+}
+
+/* Alineación personalizada para columnas específicas */
+.table .text-center {
+    text-align: center;
+}
+
+.table .text-right,
+.table .text-numeric {            /* Para valores numéricos */
+    text-align: right;
+}
+
+/* Ajustes para datos de fecha y hora */
+.table .date-column {
+    min-width: 90px;              /* Ancho mínimo para columnas de fecha */
+}
+
+.table .datetime-column {
+    min-width: 130px;             /* Ancho mínimo para columnas de fecha y hora */
+}
+
+/* Ajustes para ID y acciones */
+.table .id-column {
+    width: 60px;                  /* Ancho para columnas de ID */
+    text-align: center;
+}
+
+.table .actions-column {
+    width: 100px;                 /* Ancho para columnas de acciones */
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Tabla con bordes más evidentes para cada celda */
+.table-bordered {
+    border: 1px solid var(--border-color);
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid var(--border-color);
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+    border-bottom-width: 2px;
+}
+
+/* Tabla con filas alternas (zebra) */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.table-striped tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.08); /* Hover un poco más oscuro */
+}
+
+/* Tabla compacta (menos padding) */
+.table-sm th,
+.table-sm td {
+    padding: 6px 8px;             /* Reducción del padding para tablas compactas */
+}
+
+/* Tabla sin bordes */
+.table-borderless th,
+.table-borderless td,
+.table-borderless thead th {
+    border: 0;
+}
+
+/* Columnas con ancho predefinido */
+.table .col-xs { width: 60px; }
+.table .col-sm { width: 100px; }
+.table .col-md { width: 150px; }
+.table .col-lg { width: 200px; }
+.table .col-xl { width: 250px; }
+
+/* Estilo para tablas dentro de cards */
+.card .table-responsive {
+    margin-bottom: 0;              /* Sin margen inferior dentro de cards */
+    border: none;                  /* Sin borde si está dentro de un card */
+    border-radius: 0;              /* Sin bordes redondeados */
+    box-shadow: none;
+}
+
+.card .table th:first-child,
+.card .table td:first-child {
+    padding-left: 16px;            /* Más padding izquierdo para primera columna en cards */
+}
+
+.card .table th:last-child,
+.card .table td:last-child {
+    padding-right: 16px;           /* Más padding derecho para última columna en cards */
+}
+
+/* Indicador visual para tablas vacías */
+.table-empty-indicator {
+    text-align: center;
+    padding: 30px 15px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Indicador de ordenamiento (sort) en encabezados */
+.table th.sortable {
+    cursor: pointer;
+    padding-right: 18px;          /* Espacio para el icono */
+    position: relative;
+}
+
+.table th.sortable::after {
+    content: '↕';                /* Indicador visual de que se puede ordenar */
+    position: absolute;
+    right: 6px;
+    opacity: 0.3;
+}
+
+.table th.sort-asc::after {
+    content: '↑';                /* Flecha hacia arriba para orden ascendente */
+    opacity: 0.8;
+}
+
+.table th.sort-desc::after {
+    content: '↓';                /* Flecha hacia abajo para orden descendente */
+    opacity: 0.8;
+}
+
+/* Barra de filtros y búsqueda sobre tabla */
+.table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.table-toolbar .toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-toolbar .search-input {
+    min-width: 200px;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+}
+
+/* Paginación debajo de tabla */
+.table-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.table-pagination .pagination-info {
+    color: var(--text-muted);
+}
+
+.table-pagination .pagination-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.table-pagination .pagination-controls button {
+    background-color: var(--light-color);
+    border: 1px solid var(--border-color);
+    padding: 4px 8px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+}
+
+.table-pagination .pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.table-pagination .pagination-controls .active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Tooltip simple para datos truncados */
+.table td[title],
+.table th[title] {
+    cursor: help;
+    border-bottom: 1px dotted var(--border-color-dark);
+}
+
+/* Responsividad para Tablas */
+@media (max-width: 992px) {
+    .table th,
+    .table td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .table th,
+    .table td {
+        font-size: 0.9em;
+        padding: 8px;
+        white-space: normal;
+    }
+    
+    .table th {
+        vertical-align: bottom;
+    }
+    
+    .table td .btn {
+        padding: 3px 6px;
+        font-size: 0.75em;
+    }
+    
+    .table .actions-column {
+        width: auto;
+        max-width: 80px;
+    }
+    
+    .table-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .table-toolbar .search-input {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Tabla responsiva para móviles - Cambia el layout */
+    .table-responsive-sm .table {
+        display: block;
+    }
+    
+    .table-responsive-sm thead {
+        display: none; /* Oculta cabeceras en móvil */
+    }
+    
+    .table-responsive-sm tbody,
+    .table-responsive-sm tr {
+        display: block;
+        width: 100%;
+    }
+    
+    .table-responsive-sm td {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        border-bottom: 0;
+        padding: 8px 10px;
+    }
+    
+    .table-responsive-sm tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-sm);
+    }
+    
+    .table-responsive-sm td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        text-align: left;
+        margin-right: 5px;
+    }
+    
+    .table-responsive-sm td:last-child {
+        border-bottom: 0;
+    }
+    
+    /* Ajustes para tablas en componentes específicos */
+    .cliente-dashboard .table th,
+    .cliente-dashboard .table td,
+    .repartidor-dashboard .table th,
+    .repartidor-dashboard .table td {
+        font-size: 0.85em;
+        padding: 6px 8px;
+    }
+}

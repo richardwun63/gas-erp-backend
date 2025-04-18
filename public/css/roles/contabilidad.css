@@ -1,0 +1,6 @@
+/* Estilos específicos para el dashboard de Contabilidad */
+.contabilidad-dashboard #conta-pedido-encontrado-recibo {
+    background-color: var(--light-color);
+    border-left: 4px solid var(--info-color);
+    margin-top: 15px;
+}

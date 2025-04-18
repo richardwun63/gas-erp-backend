@@ -1,0 +1,38 @@
+/* Estilos específicos para el dashboard del Repartidor */
+.repartidor-dashboard .delivery-details {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+.repartidor-dashboard .delivery-details p {
+    margin-bottom: 5px;
+}
+.repartidor-dashboard .delivery-details strong i {
+    margin-right: 8px;
+    color: var(--secondary-color);
+    width: 15px;
+    text-align: center;
+}
+.repartidor-dashboard .delivery-details a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.repartidor-dashboard .delivery-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Para móvil */
+}
+.repartidor-dashboard .delivery-actions .btn {
+    flex-grow: 1; /* Botones ocupan espacio */
+}
+
+#repartidor-status-banner {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    font-weight: 600;
+}
+#sin-asignacion {
+    text-align: center;
+}
+#sin-asignacion h3 i {
+    color: var(--info-color);
+}

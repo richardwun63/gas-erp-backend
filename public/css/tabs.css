@@ -1,0 +1,85 @@
+/* ================================== */
+/* css/tabs.css                   */
+/* Estilos para navegación x pestañas */
+/* ================================== */
+
+/* Contenedor de la barra de navegación por pestañas */
+.tab-nav {
+    border-bottom: 2px solid var(--border-color); /* Línea gris debajo de las pestañas */
+    margin-bottom: 25px;                /* Espacio debajo de la barra de pestañas */
+    display: flex;                      /* Usa flexbox para alinear las pestañas */
+    flex-wrap: wrap;                    /* Permite que las pestañas pasen a la siguiente línea si no caben */
+}
+
+/* Estilo individual de cada enlace/botón de pestaña */
+.tab-link {
+    background-color: transparent;      /* Sin fondo */
+    border: none;                       /* Sin borde por defecto */
+    padding: 12px 18px;                 /* Espaciado interno */
+    cursor: pointer;                    /* Cursor de mano */
+    font-size: 1em;                     /* Tamaño de fuente */
+    font-weight: 600;                   /* Negrita ligera */
+    color: var(--text-muted);           /* Color gris por defecto (inactiva) */
+    border-bottom: 3px solid transparent; /* Borde inferior transparente (para animación/hover) */
+    transition: color 0.2s ease, border-color 0.2s ease; /* Transiciones suaves */
+    margin-bottom: -2px;                /* Solapa ligeramente con el borde inferior de .tab-nav */
+    white-space: nowrap;                /* Evita que el texto de la pestaña se parta */
+    outline: none;                      /* Quita borde de foco */
+    text-align: center;                 /* Centra texto e icono */
+}
+
+/* Icono dentro del enlace de pestaña */
+.tab-link i {
+    margin-right: 8px;                  /* Espacio a la derecha del icono */
+    display: inline-block;              /* Asegura alineación */
+    vertical-align: middle;             /* Alinea con el texto */
+}
+
+/* Efecto Hover sobre la pestaña (no activa) */
+.tab-link:hover {
+    color: var(--primary-color);        /* Cambia a color azul */
+    border-bottom-color: #cce5ff;       /* Borde inferior azul claro sutil */
+}
+
+/* Estilo de la pestaña ACTIVA */
+.tab-link.active {
+    color: var(--primary-color);        /* Texto azul */
+    border-bottom-color: var(--primary-color); /* Borde inferior azul sólido */
+    font-weight: 700;                   /* Ligeramente más grueso */
+}
+
+/* Contenedor del contenido de una pestaña */
+.tab-content {
+    display: none;                      /* Oculto por defecto */
+    animation: fadeIn 0.5s;             /* Animación al aparecer (definida en base.css) */
+    padding-top: 10px;                  /* Pequeño espacio arriba del contenido */
+}
+
+/* Contenido de la pestaña ACTIVA */
+.tab-content.active {
+    display: block;                     /* Se muestra */
+}
+
+/* Responsividad para Pestañas */
+@media (max-width: 768px) {
+    .tab-link {
+        padding: 10px 12px;             /* Menos padding en pestañas */
+        font-size: 0.9em;               /* Texto más pequeño */
+    }
+     .tab-nav {
+         margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+     .tab-link {
+         padding: 8px 10px;
+         font-size: 0.85em;
+         flex-grow: 1; /* Hacer que ocupen espacio disponible en móvil */
+     }
+     .tab-link i {
+        margin-right: 5px;
+        display: block; /* Icono arriba, texto abajo */
+        margin-bottom: 3px;
+     }
+}

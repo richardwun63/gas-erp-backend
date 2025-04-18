@@ -1,0 +1,225 @@
+/* ================================== */
+/* css/layout.css                 */
+/* Estilos para estructura principal  */
+/* (Header, Main Content, Footer)   */
+/* ================================== */
+
+/* === Contenedor Principal de la App === */
+/* Estilos para el div #app-container que envuelve todo cuando estás logueado */
+#app-container {
+    display: flex;          /* Usa Flexbox para organizar header, main, footer */
+    flex-direction: column; /* Los apila verticalmente */
+    min-height: 100vh;      /* Asegura que ocupe al menos toda la altura de la pantalla */
+}
+
+/* === Cabecera (#app-header) === */
+#app-header {
+    background-color: var(--primary-color); /* Fondo azul definido en base.css */
+    color: white;                         /* Texto blanco */
+    padding: 10px 20px;                   /* Espaciado interno arriba/abajo e izquierda/derecha */
+    display: flex;                        /* Usa Flexbox para alinear elementos internos */
+    justify-content: space-between;       /* Empuja la info de usuario a la izq. y la navegación a la der. */
+    align-items: center;                  /* Centra verticalmente los elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra ligera debajo */
+    position: sticky;                     /* La cabecera se queda fija al hacer scroll */
+    top: 0;                               /* Pegada al borde superior de la ventana */
+    z-index: 1000;                        /* Asegura que esté por encima de otro contenido al hacer scroll */
+}
+
+/* Contenedor de navegación dentro del header (para selector y botón salir) */
+#app-header nav {
+    display: flex;      /* Alinea elementos horizontalmente */
+    align-items: center;/* Centra verticalmente */
+    gap: 15px;          /* Espacio entre el selector de almacén y el botón de salir */
+}
+
+/* Info del Usuario en Cabecera (.user-info) */
+.user-info {
+    display: flex;
+    align-items: center; /* Alinea la foto y el texto verticalmente */
+}
+
+.user-photo {
+    width: 45px;          /* Ancho fijo */
+    height: 45px;         /* Alto fijo */
+    border-radius: 50%;   /* Hace la imagen circular */
+    margin-right: 12px;   /* Espacio entre la foto y el texto */
+    background-color: #eee; /* Color de fondo si la imagen no carga */
+    border: 2px solid var(--light-color); /* Borde claro alrededor */
+    object-fit: cover;    /* Evita que la imagen se distorsione si no es cuadrada */
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column; /* Apila el nombre y el rol verticalmente */
+}
+
+.user-name {
+    font-weight: 600;     /* Un poco más grueso que el normal */
+    font-size: 1.05em;    /* Ligeramente más grande */
+    line-height: 1.2;     /* Ajusta el espacio vertical */
+}
+
+.user-role {
+    font-size: 0.8em;     /* Más pequeño */
+    opacity: 0.8;         /* Ligeramente transparente */
+    line-height: 1.2;
+}
+
+/* Selector de Almacén Específico del Header (#warehouse-selector-header) */
+/* Es la clase .warehouse-selector PERO dentro del #app-header */
+.warehouse-selector, /* Estilo base para cualquier selector de almacén */
+#warehouse-selector-header {
+    display: flex; /* Se mostrará/ocultará con JS, aquí definimos cómo se ve cuando está visible */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente (para header) */
+    padding: 5px 10px;
+    border-radius: 4px; /* Bordes redondeados */
+    color: white;       /* Texto blanco (para header) */
+    margin-left: 20px;  /* Espacio a la izquierda (para header) */
+}
+
+.warehouse-selector i { /* Icono dentro del selector */
+    margin-right: 8px; /* Espacio a la derecha del icono */
+}
+
+.warehouse-selector select { /* El desplegable dentro del selector */
+    background-color: transparent; /* Fondo transparente (para header) */
+    border: none;                  /* Sin borde */
+    color: white;                  /* Texto blanco (para header) */
+    font-weight: 600;              /* Texto en negrita ligera */
+    padding: 2px 5px;              /* Pequeño padding interno */
+    appearance: none;              /* Quita la flecha por defecto del navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;               /* Cambia el cursor a una mano */
+    outline: none;                 /* Quita el borde azul al hacer clic */
+}
+
+/* Estilo para las opciones cuando se despliega el select en el header */
+.warehouse-selector select option {
+    color: var(--dark-color); /* Texto oscuro (legible sobre fondo blanco) */
+    background-color: white;  /* Fondo blanco */
+}
+
+/* Nombre del almacén actual mostrado junto al selector en el header */
+#current-warehouse-name-display,
+.current-warehouse-name {
+    font-style: italic;    /* Texto en cursiva */
+    /* display: none; JS controlará la visibilidad */
+    margin-left: 5px;      /* Pequeño espacio a la izquierda */
+    color: var(--secondary-color); /* Color gris por defecto */
+}
+#app-header #current-warehouse-name-display {
+    color: rgba(255, 255, 255, 0.85); /* Blanco más opaco en header */
+}
+
+
+/* Selector de Almacén para usar DENTRO del contenido (ej. Contabilidad) */
+.warehouse-selector-inline {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: inline-block; /* O flex si se necesita alinear */
+}
+.warehouse-selector-inline label {
+    margin-right: 5px;
+    font-weight: 600;
+}
+.warehouse-selector-inline select {
+    border: 1px solid var(--border-color);
+    padding: 5px 8px;
+    border-radius: 4px;
+    background-color: white; /* Asegura fondo blanco */
+    color: var(--text-color); /* Asegura texto oscuro */
+    appearance: auto; /* Restaura apariencia por defecto si se quiere */
+}
+
+
+/* === Contenido Principal (#main-content) === */
+#main-content {
+    flex-grow: 1;          /* Hace que esta sección ocupe todo el espacio vertical disponible */
+    padding: 20px;         /* Espaciado interno general */
+    background-color: var(--background-color); /* Asegura el color de fondo */
+}
+
+/* Placeholder de carga que aparece DENTRO de #main-content */
+#main-content .loading-placeholder {
+    text-align: center;     /* Centra el texto y el icono */
+    padding: 40px 20px;     /* Más espaciado para que se vea prominente */
+    color: var(--text-muted);/* Color de texto atenuado */
+    font-size: 1.2em;       /* Tamaño de fuente un poco más grande */
+}
+#main-content .loading-placeholder i { /* El icono de spinner */
+     margin-right: 10px;    /* Espacio a la derecha del icono */
+     font-size: 1.5em;      /* Icono más grande */
+}
+
+/* === Pie de Página (#app-footer) === */
+#app-footer {
+    background-color: #e9ecef; /* Fondo gris claro */
+    color: var(--text-muted);  /* Texto atenuado */
+    text-align: center;        /* Texto centrado */
+    padding: 10px;             /* Espaciado interno */
+    font-size: 0.85em;         /* Texto pequeño */
+    margin-top: auto;          /* Empuja el footer hacia abajo si #main-content es corto */
+    border-top: 1px solid var(--border-color); /* Línea superior sutil */
+    flex-shrink: 0;            /* Evita que el footer se encoja si el contenido es muy largo */
+}
+
+/* === Responsividad Específica del Layout === */
+/* Ajustes para pantallas más pequeñas (tablets/móviles) */
+@media (max-width: 768px) {
+    #app-header {
+        padding: 8px 15px;    /* Menos padding en la cabecera */
+        flex-wrap: wrap;      /* Permite que los elementos (logo, nav) pasen a la línea de abajo */
+        gap: 5px;             /* Espacio entre elementos si se envuelven */
+    }
+
+    #app-header nav {
+       gap: 10px;            /* Menos espacio entre selector y botón salir */
+       flex-basis: 100%;     /* Hace que nav ocupe toda la línea si envuelve */
+       justify-content: flex-end; /* Alinea el botón salir a la derecha */
+       margin-top: 5px;      /* Espacio si pasa a la línea de abajo */
+    }
+
+    #warehouse-selector-header {
+        margin-left: 0;       /* Quita margen */
+        /* margin-top: 5px;      No necesario si nav tiene margen */
+        width: auto;          /* Ancho automático, no 100% */
+        padding: 5px;         /* Menos padding */
+        order: -1;            /* Intenta poner el selector antes del botón salir si envuelven */
+        flex-grow: 1;         /* Permite que crezca para llenar espacio */
+        justify-content: center; /* Centra icono y select */
+    }
+
+    .user-info {
+        flex-grow: 1;         /* Permite que user-info ocupe espacio */
+        flex-basis: 60%;      /* Asegura espacio mínimo */
+    }
+
+    .user-name {
+        font-size: 1em;       /* Reduce tamaño de fuente */
+    }
+    .user-role {
+        font-size: 0.75em;    /* Reduce tamaño de fuente */
+    }
+
+    #main-content {
+        padding: 15px;        /* Menos padding en el contenido principal */
+    }
+     #main-content .loading-placeholder {
+        padding: 30px 15px;
+        font-size: 1.1em;
+    }
+     #main-content .loading-placeholder i {
+         font-size: 1.3em;
+    }
+
+    #app-footer {
+        padding: 8px;
+        font-size: 0.8em;
+    }
+}

@@ -1,0 +1,34 @@
+/* Estilos específicos para el dashboard del Cliente */
+.cliente-dashboard /* Puedes usar selectores más específicos si es necesario */ {
+    padding: 20px; /* Ejemplo de estilo */
+    background-color: var(--background-color); /* Fondo personalizado */
+}
+
+#request-maintenance-btn,
+#whatsapp-contact-btn {
+    margin-top: 15px; /* Espacio extra para estos botones */
+    width: 100%;
+}
+#whatsapp-contact-btn i.fab.fa-whatsapp {
+    color: #25D366; /* Color específico icono WhatsApp */
+}
+
+/* Estilo para la caja del código de referido */
+.referral-code-box {
+    background-color: var(--light-color);
+    border: 1px dashed var(--border-color);
+    padding: 10px 15px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    flex-wrap: wrap; /* Para móvil */
+    gap: 10px;
+}
+.referral-code-box strong {
+    font-size: 1.1em;
+    color: var(--dark-color);
+    font-family: monospace; /* Fuente monoespaciada para código */
+    word-break: break-all; /* Evita desbordamiento */
+}
