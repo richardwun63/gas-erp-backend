@@ -1,5 +1,0 @@
-// routes/productRoutes.js
-const express = require('express'); const { getCylinderTypes, getOtherProducts, createOtherProduct, updateOtherProduct, toggleOtherProductStatus, getOtherProductById } = require('../controllers/productController'); const { protect, restrictTo } = require('../middleware/authMiddleware'); const { validate, idParamValidationRules } = require('../validation/validationRules');
-const router = express.Router(); router.get('/cylinders', getCylinderTypes); router.get('/others', getOtherProducts);
-const gerenteOnly = restrictTo('gerente'); router.post('/others', protect, gerenteOnly, /* validate, */ createOtherProduct); router.get('/others/:id', protect, gerenteOnly, idParamValidationRules('id'), validate, getOtherProductById); router.put('/others/:id', protect, gerenteOnly, idParamValidationRules('id'), /* validate, */ validate, updateOtherProduct); router.put('/others/:id/status', protect, gerenteOnly, idParamValidationRules('id'), /* validate, */ validate, toggleOtherProductStatus);
-module.exports = router;
